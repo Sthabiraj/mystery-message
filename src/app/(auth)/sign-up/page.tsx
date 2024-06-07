@@ -14,7 +14,6 @@ import { ApiResponse } from "@/types/ApiResponse";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -120,17 +119,21 @@ export default function SignUpForm() {
                       }}
                     />
                   </FormControl>
-                  {isCheckingUsername && <Loader2 className="animate-spin" />}
-                  <p
-                    className={cn(
-                      "text-sm",
-                      usernameMessage === "Username is unique"
-                        ? "text-green-500"
-                        : "text-red-500"
-                    )}
-                  >
-                    test {usernameMessage}
-                  </p>
+                  {isCheckingUsername ? (
+                    <Loader2 className="animate-spin" />
+                  ) : (
+                    <p
+                      className={cn(
+                        "text-sm",
+                        usernameMessage === "Username is unique"
+                          ? "text-green-500"
+                          : "text-red-500"
+                      )}
+                    >
+                      {usernameMessage}
+                    </p>
+                  )}
+
                   <FormMessage />
                 </FormItem>
               )}
